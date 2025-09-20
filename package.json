@@ -1,0 +1,16 @@
+{
+  "name": "a11y-site-scanner",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "server.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.19.2",
+    "@axe-core/playwright": "^4.9.1",
+    "playwright": "^1.47.0",
+    "cors": "^2.8.5"
+  }
+}

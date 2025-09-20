@@ -1,0 +1,150 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "A11y Site Scanner",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://YOUR_DOMAIN"
+    }
+  ],
+  "paths": {
+    "/scan": {
+      "post": {
+        "operationId": "scan",
+        "summary": "Load a URL, run axe-core, simulate Tab order, and return findings",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "url": {
+                    "type": "string"
+                  },
+                  "waitUntil": {
+                    "type": "string",
+                    "enum": [
+                      "load",
+                      "domcontentloaded",
+                      "networkidle"
+                    ],
+                    "default": "networkidle"
+                  },
+                  "emulate": {
+                    "type": "object",
+                    "properties": {
+                      "colorScheme": {
+                        "type": "string",
+                        "enum": [
+                          "light",
+                          "dark"
+                        ],
+                        "default": "light"
+                      },
+                      "reducedMotion": {
+                        "type": "boolean",
+                        "default": false
+                      }
+                    }
+                  }
+                },
+                "required": [
+                  "url"
+                ]
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Scan results",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "finalUrl": {
+                      "type": "string"
+                    },
+                    "axe": {
+                      "type": "object"
+                    },
+                    "focusOrder": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "index": {
+                            "type": "integer"
+                          },
+                          "selector": {
+                            "type": "string"
+                          },
+                          "role": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "visible": {
+                            "type": "boolean"
+                          }
+                        }
+                      }
+                    },
+                    "unfocusableInteractive": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "contrastPairs": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "fg": {
+                            "type": "string"
+                          },
+                          "bg": {
+                            "type": "string"
+                          },
+                          "ratio": {
+                            "type": "number"
+                          },
+                          "meets": {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          "selector": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "consoleErrors": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "required": [
+                    "finalUrl",
+                    "axe",
+                    "focusOrder"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
