@@ -6,7 +6,7 @@
   },
   "servers": [
     {
-      "url": "https://YOUR_DOMAIN"
+      "url": "https://a11y-scan.onrender.com"
     }
   ],
   "paths": {
@@ -21,39 +21,21 @@
               "schema": {
                 "type": "object",
                 "properties": {
-                  "url": {
-                    "type": "string"
-                  },
+                  "url": { "type": "string" },
                   "waitUntil": {
                     "type": "string",
-                    "enum": [
-                      "load",
-                      "domcontentloaded",
-                      "networkidle"
-                    ],
+                    "enum": ["load", "domcontentloaded", "networkidle"],
                     "default": "networkidle"
                   },
                   "emulate": {
                     "type": "object",
                     "properties": {
-                      "colorScheme": {
-                        "type": "string",
-                        "enum": [
-                          "light",
-                          "dark"
-                        ],
-                        "default": "light"
-                      },
-                      "reducedMotion": {
-                        "type": "boolean",
-                        "default": false
-                      }
+                      "colorScheme": { "type": "string", "enum": ["light", "dark"], "default": "light" },
+                      "reducedMotion": { "type": "boolean", "default": false }
                     }
                   }
                 },
-                "required": [
-                  "url"
-                ]
+                "required": ["url"]
               }
             }
           }
@@ -66,79 +48,38 @@
                 "schema": {
                   "type": "object",
                   "properties": {
-                    "finalUrl": {
-                      "type": "string"
-                    },
-                    "axe": {
-                      "type": "object"
-                    },
+                    "finalUrl": { "type": "string" },
+                    "axe": { "type": "object" },
                     "focusOrder": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
-                          "index": {
-                            "type": "integer"
-                          },
-                          "selector": {
-                            "type": "string"
-                          },
-                          "role": {
-                            "type": "string"
-                          },
-                          "name": {
-                            "type": "string"
-                          },
-                          "visible": {
-                            "type": "boolean"
-                          }
+                          "index": { "type": "integer" },
+                          "selector": { "type": "string" },
+                          "role": { "type": "string" },
+                          "name": { "type": "string" },
+                          "visible": { "type": "boolean" }
                         }
                       }
                     },
-                    "unfocusableInteractive": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    },
+                    "unfocusableInteractive": { "type": "array", "items": { "type": "string" } },
                     "contrastPairs": {
                       "type": "array",
                       "items": {
                         "type": "object",
                         "properties": {
-                          "fg": {
-                            "type": "string"
-                          },
-                          "bg": {
-                            "type": "string"
-                          },
-                          "ratio": {
-                            "type": "number"
-                          },
-                          "meets": {
-                            "type": "array",
-                            "items": {
-                              "type": "string"
-                            }
-                          },
-                          "selector": {
-                            "type": "string"
-                          }
+                          "fg": { "type": "string" },
+                          "bg": { "type": "string" },
+                          "ratio": { "type": "number" },
+                          "meets": { "type": "array", "items": { "type": "string" } },
+                          "selector": { "type": "string" }
                         }
                       }
                     },
-                    "consoleErrors": {
-                      "type": "array",
-                      "items": {
-                        "type": "string"
-                      }
-                    }
+                    "consoleErrors": { "type": "array", "items": { "type": "string" } }
                   },
-                  "required": [
-                    "finalUrl",
-                    "axe",
-                    "focusOrder"
-                  ]
+                  "required": ["finalUrl", "axe", "focusOrder"]
                 }
               }
             }
