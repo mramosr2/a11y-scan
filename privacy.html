@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy for Web Accessibility Auditor - Alt Text & WCAG GPT</title>
+  <meta name="color-scheme" content="dark" />
+
+  <style>
+    :root {
+      --bg: #000;
+      --fg: #fff;
+      --muted: #cfcfcf;
+      --card: rgba(255,255,255,0.06);
+      --border: rgba(255,255,255,0.12);
+      --accent: #bb86fc;
+      --maxw: 1200px;
+    }
+
+    html, body {
+      height: 100%;
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Playfair Display", ui-serif, Georgia, "Times New Roman", serif;
+    }
+
+    /* Layout ensures footer always shows and sits at bottom */
+    body {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    /* Page wrapper spans wide but keeps readable line length on large screens */
+    .wrap {
+      width: 100%;
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 2rem clamp(1rem, 3vw, 2rem);
+    }
+
+    /* Hero */
+    .hero {
+      padding: clamp(3rem, 7vw, 6rem) clamp(1rem, 3vw, 2rem) 1rem;
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0 0 .5rem 0;
+      font-size: clamp(1.8rem, 3.6vw, 3rem);
+      letter-spacing: .2px;
+    }
+    .hero p {
+      margin: 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.125rem);
+    }
+
+    /* Section cards */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: clamp(1rem, 2.4vw, 1.5rem);
+      margin-bottom: 1rem;
+    }
+    .card h2 {
+      margin: 0 0 .6rem 0;
+      font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+    }
+    .muted { color: var(--muted); }
+
+    /* Lists/codes readable on dark */
+    ul { margin: .25rem 0 0 1.2rem; padding: 0; }
+    li { margin: .35rem 0; }
+    code {
+      font-family: ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,"Liberation Mono","Courier New",monospace;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: .08em .35em;
+    }
+
+    /* Links */
+    a {
+      color: var(--fg);
+      text-underline-offset: 2px;
+      text-decoration-color: rgba(255,255,255,0.6);
+    }
+    a:hover, a:focus {
+      color: var(--accent);
+      text-decoration-color: var(--accent);
+    }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
+
+    /* Fade-in animation */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .8s ease, transform .8s ease;
+      will-change: opacity, transform;
+    }
+    .fade-in.show {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Footer (sticky at bottom via flex layout) */
+    footer {
+      border-top: 1px solid var(--border);
+      background: rgba(255,255,255,0.03);
+    }
+    .footer-inner {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 1rem clamp(1rem, 3vw, 2rem);
+      max-width: var(--maxw);
+      margin: 0 auto;
+      width: 100%;
+    }
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
+    .footer-right {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+
+    /* Simple inline SVG icon buttons */
+    .icon-link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,0.05);
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .icon-link:hover { transform: translateY(-1px); border-color: var(--accent); }
+    .icon {
+      width: 18px;
+      height: 18px;
+      fill: currentColor;
+    }
+
+    /* Small helpers */
+    .eyebrow {
+      display: inline-block;
+      font-size: .95rem;
+      letter-spacing: .3px;
+      padding: .25rem .6rem;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      margin-bottom: .85rem;
+    }
+
+    /* Responsive tweaks */
+    @media (max-width: 640px) {
+      .footer-inner { grid-template-columns: 1fr; }
+      .footer-right { justify-content: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero fade-in">
+    <h1>Privacy Policy for Web Accessibility Auditor - Alt Text &amp; WCAG GPT</h1>
+    <u>Effective date: September 20, 2025</u>
+  </header>
+
+  <main>
+    <div class="wrap">
+      <section class="card fade-in" aria-labelledby="who">
+        <h2 id="who">Who we are</h2>
+        <p>This service powers a custom GPT Action that audits public webpages for accessibility issues and drafts high-quality alt text. The project is operated by Michael Ramos with a focus on practical, developer-ready WCAG guidance.</p>
+        <u>Our mission is simple: accelerate accessible design by returning actionable findings you can drop into code or content with minimal friction.</u>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="what">
+        <h2 id="what">What this Action does</h2>
+        <p>When you submit a URL, the Action fetches the page in a headless browser and runs <code>axe-core</code> checks. It then returns a structured JSON report including alt-text suggestions, HTML and Markdown snippets, WCAG references, and optional contrast checks intended to speed remediation and documentation.</p>
+        <u>The scanner targets public pages only. It does not authenticate, access gated content, or bypass access controls.</u>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="data">
+        <h2 id="data">Information we process</h2>
+        <ul>
+          <li><strong>Submitted URL.</strong> Needed to perform the scan and generate findings.</li>
+          <li><strong>Page content.</strong> Temporarily processed in memory to compute results such as WCAG issues, alt-text drafts, and snippets.</li>
+          <li><strong>Technical logs.</strong> Minimal diagnostics (timestamps, duration, status codes, errors) to keep the service reliable.</li>
+        </ul>
+        <u>No accounts or cookies are used by this API. We do not request names, addresses, or payment details.</u>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="storage">
+        <h2 id="storage">Data storage &amp; retention</h2>
+        <p>Scan results are generated on demand and returned in the response. The service does not persist page content or full reports after responding. Minimal server logs may be retained for up to 30 days for reliability, performance tuning, and abuse prevention, and longer only if required for security investigations.</p>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="sharing">
+        <h2 id="sharing">Sharing</h2>
+        <p>We do not sell personal information. Limited operational data may be shared with infrastructure providers solely to run and protect the service. These providers are contractually restricted from using data for unrelated purposes.</p>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="security">
+        <h2 id="security">Security</h2>
+        <p>All transport uses HTTPS. The headless browser runs in an isolated environment. The system avoids long-term storage of page content, limiting exposure. Dependencies are updated regularly and monitored for high-severity vulnerabilities.</p>
+        <u>No internet service can guarantee absolute security. We minimize retained data and practice least privilege to reduce risk.</u>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="choices">
+        <h2 id="choices">Your choices</h2>
+        <p>Only scan URLs you are authorized to test and that do not contain private or sensitive content. If you believe something was processed in error, contact us and we will investigate and remove associated logs where applicable.</p>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="contact">
+        <h2 id="contact">Contact</h2>
+        <p>Questions or requests:</p>
+        <p>
+          Email: <a href="mailto:michaelramosdev1@gmail.com">michaelramosdev1@gmail.com</a><br/>
+          Website: <a href="https://michaelramos.dev" target="_blank" rel="noopener">michaelramos.dev</a>
+        </p>
+      </section>
+
+      <section class="card fade-in" aria-labelledby="changes">
+        <h2 id="changes">Changes to this policy</h2>
+        <p>We may update this policy as features evolve or legal requirements change. Material updates that affect how information is processed will be reflected by the effective date above.</p>
+      </section>
+    </div>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-left">
+        <span>&copy; 2025 Michael Ramos</span>
+      </div>
+      <div class="footer-right" aria-label="Social links">
+     <a class="icon-link" href="https://github.com/mramosr2" target="_blank" rel="noopener" aria-label="GitHub">
+  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+    <!-- Clean GitHub mark from Simple Icons; uses currentColor -->
+    <path fill="currentColor" d="M12 .296a12 12 0 0 0-3.79 23.39c.6.11.82-.26.82-.58v-2.02c-3.34.73-4.04-1.61-4.04-1.61-.55-1.4-1.34-1.77-1.34-1.77-1.09-.74.08-.73.08-.73 1.2.08 1.83 1.23 1.83 1.23 1.07 1.83 2.8 1.3 3.48.99.11-.78.42-1.3.76-1.6-2.66-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.23-3.22-.12-.3-.53-1.52.12-3.16 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.29-1.55 3.3-1.23 3.3-1.23.65 1.64.24 2.86.12 3.16.77.84 1.23 1.9 1.23 3.22 0 4.61-2.81 5.62-5.49 5.92.43.37.81 1.1.81 2.22v3.29c0 .32.21.69.82.58A12 12 0 0 0 12 .296Z"/>
+  </svg>
+</a>
+        <a class="icon-link" href="https://www.linkedin.com/in/michael-ramos-309108242" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <!-- LinkedIn SVG -->
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zm7 0h3.8v2h.1c.5-1 1.8-2.1 3.7-2.1C19.9 8.4 23 10 23 15v8h-4v-7c0-1.7-.1-3.8-2.3-3.8-2.3 0-2.7 1.8-2.7 3.6V23h-4V8.5z"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Intersection Observer to trigger fade-ins
+    (function() {
+      const items = document.querySelectorAll('.fade-in');
+      const show = el => el.classList.add('show');
+
+      // If IntersectionObserver is available, animate on scroll; otherwise show immediately
+      if ('IntersectionObserver' in window) {
+        const io = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              show(entry.target);
+              io.unobserve(entry.target);
+            }
+          });
+        }, {root: null, rootMargin: '0px 0px -10% 0px', threshold: 0.1});
+        items.forEach(el => io.observe(el));
+      } else {
+        items.forEach(show);
+      }
+    })();
+  </script>
+</body>
+</html>
